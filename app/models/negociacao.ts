@@ -25,4 +25,12 @@ export class Negociacao {
         return this._quantidade * this._valor;
     }
 
+    public static criaDe(dateString: string, quantidadeString: string, valorString: string): Negociacao {
+        const exp = /-/g;
+        // A string passada pelo construtor deve ter o ano, mês e dia separados por vírgula.
+        const date = new Date(dateString.replace(exp, ','));
+        const quantidade = parseInt(quantidadeString);
+        const valor = parseFloat(valorString);
+        return new Negociacao(date, quantidade, valor);
+    }
 }
